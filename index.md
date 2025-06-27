@@ -1,4 +1,4 @@
---
+---
 layout: default
 title: AAIC 2025 - Basics of Genetics Workshop
 ---
