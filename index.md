@@ -20,9 +20,6 @@ title: AAIC 2025 - Basics of Genetics Workshop
 - [👥 Organizing Committee](#organizing-committee)
 - [🙏 Acknowledgements](#acknowledgements)
 
-</div>
-
-<div class="content">
 
 ## 🔸 Current Chapter
 
@@ -67,8 +64,6 @@ These are the workshop modules:
 
 ## 🗓️ Agenda
 
-
-
 | Time       | Session                                                 | Speaker(s)                               |
 |------------|---------------------------------------------------------|-------------------------------------------|
 | 8:00 am    | Welcome / Intro                                          | Tavia Evans                               |
@@ -81,6 +76,7 @@ These are the workshop modules:
 | 11:35 am   | PostGWAS analysis: Understanding biological pathways    | Krishna Rani Kalari & Karunya Kandimalla  |
 | 11:55 am   | End / Review                                             | Tavia Evans, Natalia Vilor-Tejedor, Junhao Wen   |
 
+---
 
 ## 🎯 Target Audience
 
@@ -114,6 +110,8 @@ This course is for early-career researchers, students, clinicians, or educators 
 | Genome Wide Association Studies  | [Slides](#)                |
 | Polygenic Risk Scores            | [Slides](#)                |
 | PostGWAS analysis                | [Slides](#)                |
+
+---
 
 ## 👥 Organizing Committee
 
@@ -149,7 +147,7 @@ This workshop is supported by:
 Special thanks to ADNI datasets, and infrastructure support from XXXX teams
 ---
 
-</div>
+
 
 © 2025 AAIC Workshop Basics of Genetics • Maintained by [@GeneticNeuroStats](https://github.com/GeneticNeuroStats)  
 Hosted on [GitHub Pages](https://pages.github.com/)
