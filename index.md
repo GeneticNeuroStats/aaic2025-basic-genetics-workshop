@@ -30,19 +30,19 @@ title: AAIC 2025 - Basics of Genetics Workshop
 </style>
 
 <div class="sidebar">
-
-### 📚 Navigation
-- [Summary and Setup](#-summary-and-setup)
-- [Connecting to VM](#-connecting-to-your-virtual-machine)
-- [Modules](#-workshop-modules)
-- [Agenda](#-agenda)
-- [Target Audience](#-target-audience)
-- [Learning Objectives](#-learning-objectives)
-- [Requirements](#-requirements)
-- [Webinars & Slides](#-webinars--slides)
-- [Organizing Committee](#-organizing-committee)
-- [Acknowledgements](#-acknowledgements)
-
+<h3>📚 Navigation</h3>
+<ul>
+  <li><a href="#summary-and-setup">Summary and Setup</a></li>
+  <li><a href="#connecting-to-your-virtual-machine">Connecting to VM</a></li>
+  <li><a href="#workshop-modules">Modules</a></li>
+  <li><a href="#agenda">Agenda</a></li>
+  <li><a href="#target-audience">Target Audience</a></li>
+  <li><a href="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#requirements">Requirements</a></li>
+  <li><a href="#webinars--slides">Webinars & Slides</a></li>
+  <li><a href="#organizing-committee">Organizing Committee</a></li>
+  <li><a href="#acknowledgements">Acknowledgements</a></li>
+</ul>
 </div>
 
 <div class="content">
