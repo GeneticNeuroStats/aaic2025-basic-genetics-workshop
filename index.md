@@ -3,33 +3,6 @@ layout: default
 title: AAIC 2025 - Basics of Genetics Workshop
 ---
 
-<style>
-.sidebar {
-  float: left;
-  width: 22%;
-  padding-right: 2%;
-  border-right: 1px solid #ccc;
-  box-sizing: border-box;
-  min-height: 100vh;
-  font-size: 0.95em;
-}
-.content {
-  float: left;
-  width: 74%;
-  padding-left: 2%;
-  box-sizing: border-box;
-}
-@media screen and (max-width: 768px) {
-  .sidebar, .content {
-    float: none;
-    width: 100%;
-    border: none;
-    padding: 0;
-  }
-}
-</style>
-
-<div class="sidebar">
 
   
 # 🧬 Basics of Genetic Analysis  
