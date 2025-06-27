@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Basics of Genetic Analysis - AAIC 2025
+title: AAIC 2025 - Basics of Genetics Workshop
 ---
 
 <style>
@@ -28,6 +28,7 @@ title: Basics of Genetic Analysis - AAIC 2025
 </style>
 
 <div class="sidebar">
+
   
 # 🧬 Basics of Genetic Analysis  
 
