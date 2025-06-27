@@ -2,8 +2,6 @@
 layout: default
 title: AAIC 2025 - Basics of Genetics Workshop
 ---
-
-
   
 # 🧬 Basics of Genetic Analysis  
 
@@ -20,6 +18,7 @@ title: AAIC 2025 - Basics of Genetics Workshop
 - [👥 Organizing Committee](#organizing-committee)
 - [🙏 Acknowledgements](#acknowledgements)
 
+---
 
 ## 🔸 Current Chapter
 
@@ -135,7 +134,6 @@ This course is for early-career researchers, students, clinicians, or educators 
 - Armand Gonzalez-Escalante, MSc  
 - Blanca Rodriguez-Fernandez, MSc  
 - Patricia Genius, MSc  
-
 ---
 
 ## 🙏 Acknowledgements
@@ -146,8 +144,6 @@ This workshop is supported by:
 - ISTAART Neuroimaging PIA - Working group Brain Imaging Genetics
 Special thanks to ADNI datasets, and infrastructure support from XXXX teams
 ---
-
-
 
 © 2025 AAIC Workshop Basics of Genetics • Maintained by [@GeneticNeuroStats](https://github.com/GeneticNeuroStats)  
 Hosted on [GitHub Pages](https://pages.github.com/)
