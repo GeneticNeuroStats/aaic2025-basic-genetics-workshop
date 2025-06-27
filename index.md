@@ -1,8 +1,8 @@
-
 ---
 layout: default
 title: Basics of Genetic Analysis - AAIC 2025
 ---
+
 
 ![AAIC 2025 Logo](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DP2kX7P1kcpo&psig=AOvVaw1xHoKRs3Fuq2OJbEdxdBji&ust=1751125730016000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLC6o-v5kY4DFQAAAAAdAAAAABAE)
 
