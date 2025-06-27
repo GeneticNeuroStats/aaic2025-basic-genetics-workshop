@@ -10,6 +10,8 @@ title: AAIC 2025 - Basics of Genetics Workshop
   padding-right: 2%;
   border-right: 1px solid #ccc;
   box-sizing: border-box;
+  min-height: 100vh;
+  font-size: 0.95em;
 }
 .content {
   float: left;
