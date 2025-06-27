@@ -1,9 +1,10 @@
+
 ---
 layout: default
 title: Basics of Genetic Analysis - AAIC 2025
 ---
 
-![AAIC 2025 Logo](https://www.alz.org/images/aaic/aaic-og-logo.jpg)
+![AAIC 2025 Logo](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dementiaresearcher.nihr.ac.uk%2Fevent%2Falzheimers-association-international-conference-aaic-2025%2F&psig=AOvVaw3pV_RTLHGVaw-WJ1WvJWPY&ust=1751125532828000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLj5xIr5kY4DFQAAAAAdAAAAABAE)
 
 # 🧬 Basics of Genetic Analysis  
 📅 **Friday, July 25, 2025** | 🕗 **8:00 am – 12:00 pm**  
