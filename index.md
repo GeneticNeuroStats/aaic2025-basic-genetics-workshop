@@ -3,49 +3,6 @@ layout: default
 title: AAIC 2025 - Basics of Genetics Workshop
 ---
 
-<style>
-.sidebar {
-  float: left;
-  width: 22%;
-  padding-right: 2%;
-  border-right: 1px solid #ccc;
-  box-sizing: border-box;
-  min-height: 100vh;
-  font-size: 0.95em;
-}
-.content {
-  float: left;
-  width: 74%;
-  padding-left: 2%;
-  box-sizing: border-box;
-}
-@media screen and (max-width: 768px) {
-  .sidebar, .content {
-    float: none;
-    width: 100%;
-    border: none;
-    padding: 0;
-  }
-}
-</style>
-
-<div class="sidebar">
-<h3>📚 Navigation</h3>
-<ul>
-  <li><a href="#summary-and-setup">Summary and Setup</a></li>
-  <li><a href="#connecting-to-your-virtual-machine">Connecting to VM</a></li>
-  <li><a href="#workshop-modules">Modules</a></li>
-  <li><a href="#agenda">Agenda</a></li>
-  <li><a href="#target-audience">Target Audience</a></li>
-  <li><a href="#learning-objectives">Learning Objectives</a></li>
-  <li><a href="#requirements">Requirements</a></li>
-  <li><a href="#webinars--slides">Webinars & Slides</a></li>
-  <li><a href="#organizing-committee">Organizing Committee</a></li>
-  <li><a href="#acknowledgements">Acknowledgements</a></li>
-</ul>
-</div>
-
-<div class="content">
   
 # 🧬 Basics of Genetic Analysis  
   
@@ -170,8 +127,6 @@ This workshop is supported by:
 - ISTAART Neuroimaging PIA - Working group Brain Imaging Genetics
 Special thanks to ADNI datasets, and infrastructure support from XXXX teams
 ---
-
-</div>
 
 
 © 2025 AAIC Workshop Basics of Genetics • Maintained by [@GeneticNeuroStats](https://github.com/GeneticNeuroStats)  
