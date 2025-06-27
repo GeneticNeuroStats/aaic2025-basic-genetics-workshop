@@ -4,25 +4,7 @@ title: AAIC 2025 - Basics of Genetics Workshop
 ---
   
 # 🧬 Basics of Genetic Analysis  
-
-### 📚 Navigation
-
-- [🔸 Current Chapter](#current-chapter)
-- [🧠 Summary and Setup](#summary-and-setup)
-- [💻 Connect to VM](#connecting-to-your-virtual-machine)
-- [🧬 Episodes](#episodes)
-- [🗓️ Agenda](#agenda)
-- [🎯 Target Audience](#target-audience)
-- [📋 Requirements](#requirements)
-- [🔗 Webinars & Slides](#webinars--slides)
-- [👥 Organizing Committee](#organizing-committee)
-- [🙏 Acknowledgements](#acknowledgements)
-
----
-
-## 🔸 Current Chapter
-
-**Summary and Setup**  
+  
 📅 **Friday, July 25, 2025** | 🕗 **8:00 am – 12:00 pm**  
 📍 *Westin Harbour Castle – Pier 2, Toronto, Canada*  
 👥 *In-person attendance only*
