@@ -2,6 +2,7 @@
 layout: default
 title: AAIC 2025 - Basics of Genetics Workshop
 ---
+
 <style>
 .sidebar {
   float: left;
@@ -170,7 +171,10 @@ This workshop is supported by:
 Special thanks to ADNI datasets, and infrastructure support from XXXX teams
 ---
 
+</div>
+
+
 © 2025 AAIC Workshop Basics of Genetics • Maintained by [@GeneticNeuroStats](https://github.com/GeneticNeuroStats)  
 Hosted on [GitHub Pages](https://pages.github.com/)
 
-</div>
+
