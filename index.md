@@ -84,11 +84,11 @@ Participants will access a cloud-hosted Linux-based VM with pre-installed tools.
 
 ##    Speakers
 
-- Krishna Rani Kalari, PhD  
+- Natalia Vilor-Tejedor, PhD
 - Yuetiva Robles, PhD  
 - Emma Luckett, PhD  
 - Karunya Kandimalla, PhD  
-- Natalia Vilor-Tejedor, PhD  
+- Krishna Rani Kalari, PhD  
 
 ##     Teaching Aids
 
@@ -97,7 +97,6 @@ Participants will access a cloud-hosted Linux-based VM with pre-installed tools.
 - Blanca Rodriguez-Fernandez, MSc  
 - Patricia Genius, MSc
   
-
 ---
 
 This workshop is supported by: Alzheimer’s Association, STAART Neuroimaging PIA - Working group Brain Imaging Genetics
