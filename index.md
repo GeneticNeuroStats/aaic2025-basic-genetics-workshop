@@ -29,21 +29,6 @@ Participants will access a cloud-hosted Linux-based VM with pre-installed tools.
 
 ---
 
-## 🧬 Workshop modules
-
-These are the workshop modules:
-
-1. How to design your genetics experiment  
-2. How to get data, QC, and imputation    
-3. Single SNP association analysis 
-4. Genome Wide Association Studies (GWAS)    
-5. Polygenic Risk Score (PRS) calculation with PRSice 
-6. PostGWAS analysis: Understanding biological pathways 
-
-👉 [See all in one page](#agenda)
-
----
-
 ## 🗓️ Agenda
 
 | Time       | Session                                                 | Speaker(s)                               |
@@ -57,12 +42,6 @@ These are the workshop modules:
 | 10:40 am   | Polygenic Risk Score (PRS) calculation with PRSice      | Emma Luckett                              |
 | 11:35 am   | PostGWAS analysis: Understanding biological pathways    | Krishna Rani Kalari & Karunya Kandimalla  |
 | 11:55 am   | End / Review                                             | Tavia Evans, Natalia Vilor-Tejedor, Junhao Wen   |
-
----
-
-## 🎯 Target Audience
-
-This course is for early-career researchers, students, clinicians, or educators involved in genetics and dementia research. No prior coding experience required.
 
 ---
 
@@ -93,7 +72,7 @@ This course is for early-career researchers, students, clinicians, or educators 
 | Polygenic Risk Scores            | [Slides](#)                |
 | PostGWAS analysis                | [Slides](#)                |
 
----
+v
 
 ## 👥 Organizing Committee
 
@@ -103,7 +82,7 @@ This course is for early-career researchers, students, clinicians, or educators 
 - **David M Cash, PhD**
 - **Tobey J. Betthauser, PhD**
 
-## 🎤 Speakers
+## Speakers
 
 - Krishna Rani Kalari, PhD  
 - Yuetiva Robles, PhD  
@@ -111,23 +90,23 @@ This course is for early-career researchers, students, clinicians, or educators 
 - Karunya Kandimalla, PhD  
 - Natalia Vilor-Tejedor, PhD  
 
-## 🧑‍🏫 Teaching Aids
+## Teaching Aids
 
 - Luigi Lorenzini, PhD  
 - Armand Gonzalez-Escalante, MSc  
 - Blanca Rodriguez-Fernandez, MSc  
-- Patricia Genius, MSc  
+- Patricia Genius, MSc
+  
 ---
 
-## 🙏 Acknowledgements
+## Acknowledgements
 
 This workshop is supported by:
 
 - Alzheimer’s Association
 - ISTAART Neuroimaging PIA - Working group Brain Imaging Genetics
 Special thanks to ADNI datasets, and infrastructure support from XXXX teams
----
-
+  
 
 © 2025 AAIC Workshop Basics of Genetics • Maintained by [@GeneticNeuroStats](https://github.com/GeneticNeuroStats)  
 Hosted on [GitHub Pages](https://pages.github.com/)
