@@ -82,7 +82,7 @@ Participants will access a cloud-hosted Linux-based VM with pre-installed tools.
 - **David M Cash, PhD**
 - **Tobey J. Betthauser, PhD**
 
-## Speakers
+##    Speakers
 
 - Krishna Rani Kalari, PhD  
 - Yuetiva Robles, PhD  
@@ -90,24 +90,18 @@ Participants will access a cloud-hosted Linux-based VM with pre-installed tools.
 - Karunya Kandimalla, PhD  
 - Natalia Vilor-Tejedor, PhD  
 
-## Teaching Aids
+##     Teaching Aids
 
 - Luigi Lorenzini, PhD  
 - Armand Gonzalez-Escalante, MSc  
 - Blanca Rodriguez-Fernandez, MSc  
 - Patricia Genius, MSc
   
+
 ---
 
-## Acknowledgements
-
-This workshop is supported by:
-
-- Alzheimer’s Association
-- ISTAART Neuroimaging PIA - Working group Brain Imaging Genetics
+This workshop is supported by: Alzheimer’s Association, STAART Neuroimaging PIA - Working group Brain Imaging Genetics
 Special thanks to ADNI datasets, and infrastructure support from XXXX teams
-  
----
 
 © 2025 AAIC Workshop Basics of Genetics • Maintained by [@GeneticNeuroStats](https://github.com/GeneticNeuroStats)  
 Hosted on [GitHub Pages](https://pages.github.com/)
