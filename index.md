@@ -72,7 +72,7 @@ Participants will access a cloud-hosted Linux-based VM with pre-installed tools.
 | Polygenic Risk Scores            | [Slides](#)                |
 | PostGWAS analysis                | [Slides](#)                |
 
-v
+---
 
 ## 👥 Organizing Committee
 
@@ -107,6 +107,7 @@ This workshop is supported by:
 - ISTAART Neuroimaging PIA - Working group Brain Imaging Genetics
 Special thanks to ADNI datasets, and infrastructure support from XXXX teams
   
+---
 
 © 2025 AAIC Workshop Basics of Genetics • Maintained by [@GeneticNeuroStats](https://github.com/GeneticNeuroStats)  
 Hosted on [GitHub Pages](https://pages.github.com/)
