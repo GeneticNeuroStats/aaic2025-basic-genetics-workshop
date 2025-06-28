@@ -101,6 +101,7 @@ Participants will access a cloud-hosted Linux-based VM with pre-installed tools.
 ---
 
 This workshop is supported by: Alzheimer’s Association, STAART Neuroimaging PIA - Working group Brain Imaging Genetics
+
 Special thanks to ADNI datasets, and infrastructure support from XXXX teams
 
 © 2025 AAIC Workshop Basics of Genetics • Maintained by [@GeneticNeuroStats](https://github.com/GeneticNeuroStats)  
