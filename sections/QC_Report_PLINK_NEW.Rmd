@@ -1,0 +1,508 @@
+---
+title: "Basics of Genetics - Quality control of Genetic data"
+author: "Natalia Vilor-Tejedor (nvilor@barcelonabeta.org)"
+
+output:
+  html_document:
+    highlight: default
+    number_sections: true
+    theme: readable
+    toc: true
+    toc_depth: 2
+    toc_float: true
+---
+
+<style type="text/css">
+body {
+  font-size: 16px;
+  max-width: 95%;
+  margin: auto;
+}
+
+td {
+  font-size: 16px;
+}
+
+h1.title, h1, h2, h3 {
+  color: purple; /* Purple headers */
+}
+
+h1.title {
+  font-size: 28px;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 22px;
+}
+
+h3 {
+  font-size: 20px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+code.r {
+  font-size: 16px;
+}
+</style>
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(knitr)
+```
+
+---
+
+# Summary {.unnumbered}
+
+This report outlines a quality control (QC) workflow for SNP genotyping data using PLINK. Key filtering thresholds include:
+
+- **Sample Call Rate**: Exclude individuals with <98% genotyping completeness
+- **Heterozygosity**: Exclude samples ±3 SD from the mean
+- **Sex Discrepancies**: Flagged by PLINK's `--check-sex`
+- **MAF Threshold**: SNPs with MAF < 1% excluded
+- **Missingness per SNP**: Exclude SNPs with missing rate > 5%
+- **HWE Filtering**: Applied to autosomes and chrX (females only), p < 1e-6
+
+
+
+💡 *Estimated runtime per step:*
+
+ - Sample QC (missingness, het): ~2 min  
+ - Sex check: <1 min  
+ - PCA (IBD & MDS): ~5–10 min depending on sample size  
+ - SNP-level filtering: ~2–5 min
+
+---
+
+
+# Sample Quality Control
+
+## Sample Call Rate (Missingness)
+Sample call rate refers to the proportion of successfully genotyped SNPs for each individual. A low call rate may reflect issues such as poor DNA quality, sample contamination, or technical failures during genotyping.
+
+Each sample's missing genotype rate is calculated using PLINK, which outputs both the *number of missing SNPs* and the *proportion of missing SNPs per individual*. Individuals with a high proportion of missing data can introduce bias or reduce the power of downstream analyses and are typically excluded based on a predefined threshold.
+
+
+### Generate proportion of missing data
+At the shell prompt, type:
+
+```{r, eval=F}
+./plink/plink --bfile data/ADNI_cluster_01_forward_757LONI --missing --out data/ADNI_GCR --noweb
+```
+
+This command (PLINK v1.9) generates the files *ADNI_GCR.imiss* and *ADNI_GCR.lmiss*. In the *ADNI_GCR.imiss* file, the fourth column (*N_MISS*) indicates the number of missing SNPs per individual, while the sixth column (F_MISS) reports the proportion of missing SNPs. The missing call rate (F_MISS) is a key quality metric used to identify samples with excessive genotype missingness.
+
+In this analysis, individuals with a genotype call rate below 90% (i.e., *F_MISS* > 0.1) were excluded. <span style="color:red">Note: In PLINK version 2.0, the corresponding output is stored in files with the *.smiss* extension.</span>
+
+<span style="color:red">Important: The R code below is optional and intended for post-processing of the PLINK output. It can be run after completing the QC steps. </span>
+```{r, eval=F}
+# Load missingness per sample
+d <- read.table("data/ADNI_GCR.imiss", header = TRUE)
+
+# Identify individuals with F_MISS > 0.1
+excl_cr <- d[d$F_MISS > 0.1, c(1, 2)]
+if(nrow(excl_cr) > 0) excl_cr$reason <- "Low Call Rate (<90%)"
+```
+
+Visual inspection:
+```{r, eval=F}
+install.packages("ggplot2")
+library(ggplot2)
+# Histogram of missing genotype rate
+pdf("data/call_rate_genotypes.pdf")
+ggplot(data = d, aes(x = F_MISS)) +
+  geom_histogram(color = "black", fill = "red", bins = 30) +
+  labs(
+    title = "Distribution of Missing Call Rates per Individual",
+    x = "Proportion of Missing SNPs (F_MISS)",
+    y = "Number of Individuals"
+  ) +
+  theme_minimal()
+dev.off()
+```
+
+---
+
+## Heterozygosity
+
+Heterozygosity rates across individuals are examined to detect deviations that may indicate sample contamination (excess heterozygosity) or inbreeding (reduced heterozygosity). These outliers can compromise downstream analyses and must be carefully filtered.
+
+### Generate heterozygosity estimates
+At the shell prompt, run the following command:
+
+At the shell prompt type:
+```{r, eval=F}
+./plink/plink --bfile data/ADNI_cluster_01_forward_757LONI --het --out data/ADNI_GH --noweb
+```
+
+This command generates the file *ADNI_GH.het*, where:
+
+- Column 3 (*O(Hom)*) records the number of observed homozygous genotypes per individual.
+
+- Column 5 (*N(NM)*) provides the total number of non-missing genotypes.
+
+The observed heterozygosity rate is calculated as: Het = *(N(NM) - O(Hom))/N(NM)*
+
+PLINK also outputs the inbreeding coefficient (estimate of heterozygosity) (*F*) for each individual. A strongly negative F may indicate excess heterozygosity due to DNA contamination, while a strongly positive F can be suggestive of inbreeding. In most cases, moderate deviations from 0 reflect natural variability.
+
+Samples with heterozygosity rates outside ±4 standard deviations from the mean are considered outliers and excluded:
+
+```{r, eval=F}
+het <- read.table("data/ADNI_GH.het", header = TRUE)
+het$meanHet <- (het$N.NM. - het$O.HOM.) / het$N.NM.
+
+# Define cutoff thresholds
+lo <- mean(het$meanHet) - 4 * sd(het$meanHet)
+up <- mean(het$meanHet) + 4 * sd(het$meanHet)
+
+# Identify outliers
+excl_het <- subset(het, meanHet < lo | meanHet > up, select = c(FID, IID))
+if (nrow(excl_het) > 0) excl_het$reason <- "Heterozygosity"
+```            
+
+The following plot combines heterozygosity and genotype missingness for quality control visualization:
+```{r, eval=F}                     
+hetlinesd <- 4
+missingnessline <- 2
+
+imiss <- read.table("data/ADNI_GCR.imiss", header = TRUE)
+imiss$logF_MISS <- log10(imiss$F_MISS)
+
+het <- read.table("data/ADNI_GH.het", header = TRUE)
+het$meanHet <- (het$N.NM. - het$O.HOM.) / het$N.NM.
+
+library(geneplotter)
+colors <- densCols(imiss$logF_MISS, het$meanHet)
+
+pdf("data/cr_het_plot.pdf")
+plot(
+  imiss$logF_MISS, het$meanHet, col = colors, pch = 20,
+  xlim = c(-3, 0), ylim = c(0, 0.5),
+  xlab = "Proportion of Missing Genotypes (log10)", 
+  ylab = "Heterozygosity Rate", axes = FALSE
+)
+axis(1, at = c(-3, -2, -1, 0), labels = c(0.001, 0.01, 0.1, 1))
+axis(2, at = seq(0, 0.5, by = 0.05), tick = TRUE)
+
+abline(h = mean(het$meanHet) ± hetlinesd * sd(het$meanHet), col = "red", lty = 2)
+dev.off()
+
+# This plot helps visualize the joint distribution of missing data and heterozygosity to flag problematic samples.
+```
+
+---
+
+## Identification of individuals with discordant sex information
+
+Sex discrepancies between recorded metadata and genetic data can be detected by analyzing heterozygosity on the X chromosome. This metric leverages biological differences in X chromosome composition between males and females:
+
+- Males are hemizygous for the X chromosome (excluding pseudoautosomal regions) and therefore are expected to show very low or no heterozygosity across X-linked markers (~0).
+
+- Females, having two X chromosomes, are expected to exhibit higher heterozygosity at these same markers (>0.4).
+
+Based on this distinction, individuals whose observed heterozygosity does not align with their reported sex may be misannotated or affected by sample quality issues and should be flagged for exclusion.
+
+### Run Sex check
+
+At the shell prompt, type:
+
+```{r, eval=F}
+./plink/plink --bfile data/ADNI_cluster_01_forward_757LONI --check-sex --out data/ADNI_sexcheck --noweb
+```
+
+This command evaluates X chromosome heterozygosity to infer genetic sex and compares it with the reported sex from the PED file. The output file *ADNI_sexcheck.sexcheck* contains:
+
+- The observed heterozygosity rate (F)
+
+- The expected sex
+
+- A *STATUS* column that flags discrepancies (e.g., "PROBLEM")
+
+```{r, eval=F}
+#Flagging individuals with sex discordance:
+s <- read.table("data/ADNI_sexcheck.sexcheck", header = TRUE)
+excl_sex <- subset(s, STATUS == "PROBLEM", select = c(FID, IID))
+if (nrow(excl_sex) > 0) excl_sex$reason <- "Sex Discordance"
+```
+
+---
+
+## Identification of individual of divergent ancestry
+To identify individuals with divergent ancestry—potential population outliers—we perform Principal Component Analysis (PCA) based on identity-by-descent (IBD) estimates. This approach, as described by Patterson et al. (2006), enables the detection of genetic substructure within the sample.
+
+In this case, PCA reveals a homogeneous cluster of individuals in the first two principal components (PCs), suggesting no evidence of population outliers. Consequently, no samples were excluded based on ancestry divergence in this analysis.
+
+At the shell prompt, type:
+```{r, eval=F}
+./plink/plink --bfile data/ADNI_cluster_01_forward_757LONI --genome --out data/ADNI_GIBD --noweb
+./plink/plink --bfile data/ADNI_cluster_01_forward_757LONI --cluster --read-genome data/ADNI_GIBD.genome --mds-plot 20 --K 2 --out data/PCA_adni --noweb
+```
+
+- The first command estimates pairwise genome-wide IBD sharing.
+
+- The second performs multidimensional scaling (MDS) analysis based on the genome-wide IBD matrix and computes the first four principal components.
+
+## Visual inspection
+```{r, eval=F}
+PCA_adni <- read.table("data/PCA_adni.mds", header = TRUE)
+
+# PCs 1 vs 2
+pdf("data/pcas12.pdf")
+ggplot(PCA_adni, aes(x = C1, y = C2)) +
+  geom_point() +
+  geom_text(label = rownames(PCA_adni), vjust = 1.5, size = 3) +
+  ggtitle("Population Stratification: PC1 vs PC2") +
+  xlab("Principal Component 1") +
+  ylab("Principal Component 2")
+dev.off()
+
+# PCs 3 vs 4
+pdf("data/pcas34.pdf")
+ggplot(PCA_adni, aes(x = C3, y = C4)) +
+  geom_point() +
+  geom_text(label = rownames(PCA_adni), vjust = 1.5, size = 3) +
+  ggtitle("Population Stratification: PC3 vs PC4") +
+  xlab("Principal Component 3") +
+  ylab("Principal Component 4")
+dev.off()
+```
+
+---
+
+## Removal of all individuals/samples failing QC:
+
+After identifying individuals with:
+
+- Excessive missing genotype rates (low call rate),
+
+- Aberrant heterozygosity values, and
+
+- Discordant sex information,
+
+We compile all flagged samples into a single exclusion list and remove them from the dataset.
+
+
+```{r, eval=F}
+# Combine all exclusion lists
+mylist <- rbind(excl_cr, excl_het, excl_sex)
+
+# Ensure no duplicate entries (based on Family ID)
+mylist <- mylist[!duplicated(mylist$FID), ]
+
+# Save full list with reasons
+write.table(mylist, "data/excluded_ids_reason.txt", row.names = FALSE, quote = FALSE)
+
+# Save clean list with only FID and IID for PLINK
+write.table(mylist[, c("FID", "IID")], "data/excluded_ids.txt", row.names = FALSE, quote = FALSE)
+```
+
+- *excluded_ids_reason.txt*: Contains FID, IID, and reason for exclusion.
+
+- *excluded_ids.txt*: Contains only FID and IID (required format for PLINK *--remove*).
+
+```{r, eval=F}
+./plink/plink --bfile data/ADNI_cluster_01_forward_757LONI --remove data/excluded_ids.txt --make-bed --out data/ADNI_QC_sample --noweb
+```
+
+This command filters out the excluded individuals from the original dataset and creates a new binary PLINK dataset with the suffix ADNI_QC_sample.
+
+📁 Output files:
+
+- ADNI_QC_sample.bed
+- ADNI_QC_sample.bim
+- ADNI_QC_sample.fam
+
+At this point, the remaining dataset consists only of individuals who passed all sample-level quality control criteria.
+
+---
+
+
+# Genetic data Quality Control
+
+## Identification of all markers with an excessive missing genotype rate 
+
+- Explore genotyping/missingness in the data. To calculate the missing genotype rate for each marker, type:
+
+```{r, eval=F}
+./plink/plink --bfile data/ADNI_QC_sample --missing --out data/ADNI_QC_sample_CR --noweb
+```
+
+This command generates *.lmiss* and *.imiss* files detailing missingness per SNP and individual, respectively.
+
+
+- Exclude SNPs with a missing genotype rate >5%:
+```{r, eval=F}
+./plink/plink  --bfile data/ADNI_QC_sample --geno 0.05 --make-bed --out data/ADNI_QC_sample_CR --noweb
+```
+
+---
+
+## Minor Allele Frequency (MAF)
+
+Filtering SNPs based on minor allele frequency is critical for several reasons:
+
+- Reduces genotyping errors: Rare variants (MAF <1%) are more likely to be miscalled due to low signal intensity and poor clustering.
+
+- Avoids statistical instability: SNPs with very low MAFs occur in very few individuals and can lead to inflated p-values or unstable effect estimates in association studies.
+
+- Improves power: Common variants (e.g., MAF >1%) have better statistical power in typical GWAS sample sizes. Rare variants often require very large cohorts to be meaningfully analyzed.
+
+- Enhances replicability: Removing extremely rare variants increases the likelihood that significant findings will replicate across independent studies.
+
+To compute the MAF for each SNP:
+```{r, eval=F}
+./plink/plink --bfile data/ADNI_QC_sample_CR --freq --out data/ADNI_QC_sample_CR_MAF --noweb
+```
+
+- Exclude SNPs with a MAF below 1%:
+```{r, eval=F}
+./plink/plink --bfile data/ADNI_QC_sample_CR --maf 0.01 --make-bed --out data/ADNI_QC_sample_CR_MAF --noweb
+```
+
+This step ensures the removal of rare variants which may be prone to genotyping errors.
+
+
+---
+
+## Hardy Weinberg Equilibrium (HWE)
+
+In order to check the allele frequency in a population, we can use the Hardy-Weinberg equation (except for sexual chromosomes).
+(optional): this lines of code split specific chromosomes (e.g., chr23 = X, chr24 = Y, chr25 = mitochondrial dna):
+
+```{r, eval=F}
+./plink/plink --bfile data/ADNI_QC_sample_CR_MAF --chr 23 --make-bed --out data/ADNI_chr23 --noweb
+./plink/plink --bfile data/ADNI_QC_sample_CR_MAF --chr 24 --make-bed --out data/ADNI_chr24 --noweb
+./plink/plink --bfile data/ADNI_QC_sample_CR_MAF --chr 25 --make-bed --out data/ADNI_chr25 --noweb
+
+# Convert to additive format
+./plink/plink --bfile data/ADNI_QC_sample_CR_MAF --chr 23 --recodeA --out data/ADNI_chr23 --noweb
+./plink/plink --bfile data/ADNI_QC_sample_CR_MAF --chr 24 --recodeA --out data/ADNI_chr24 --noweb
+./plink/plink --bfile data/ADNI_QC_sample_CR_MAF --chr 25 --recodeA --out data/ADNI_chr25 --noweb
+```
+
+- Check deviations from HWE:
+```{r, eval=F}
+./plink/plink --bfile data/ADNI_QC_sample_CR_MAF --chr 1-22 --hardy --out data/ADNI_QC_sample_CR_MAF_HWE --noweb
+```
+
+- Remove SNPs with HWE p-value < 1e-6:
+```{r, eval=F}
+./plink/plink --bfile data/ADNI_QC_sample_CR_MAF --chr 1-22 --hwe 0.000001 --make-bed --out data/ADNI_QC_FINAL --noweb
+```
+
+
+### X chromosome (only in women)
+
+Why HWE is only meaningful applied to Females for chromosome X? Men are hemizygous for X, this means that men have only one X chromosome (XY), meaning they carry just one allele per SNP on chrX. Therefore, they cannot be heterozygous.
+
+**HWE requires the presence of both homozygous and heterozygous genotypes to assess expected vs observed genotype frequencies.**
+
+```{r, eval=F}
+# HWE on X chromosome (females only)
+./plink/plink --bfile data/ADNI_chr23 --filter-females --hwe 0.000001 --make-bed --out data/ADNI_chr23_HWE_females --noweb
+./plink/plink --bfile data/ADNI_chr23_HWE_females  --recodeA --out data/ADNI_chr23_HWE_females --noweb
+```
+
+No HWE for chr24 (Y) and chr25 (mtDNA) => HWE assumptions do not apply at all.
+
+
+**[optional] Generate one file per chromosome:**
+
+```{r, eval=F}
+for chr in {1..22}; do
+  ./plink/plink --bfile data/ADNI_QC_FINAL --chr $chr --make-bed --out data/ADNI_QC_FINAL_chr$chr --noweb
+  ./plink/plink --bfile data/ADNI_QC_FINAL_chr$chr --recodeA --out data/ADNI_QC_FINAL_chr$chr --noweb
+done
+```
+
+
+---
+
+# Description of the final dataset of genetic markers {.unnumbered}
+
+Table:
+```{r, eval=F}
+library(data.table)
+library(knitr)
+
+# Initialize vector to hold SNP counts for chromosomes 1–22
+n_snps <- numeric(22)
+
+# Loop through autosomal chromosomes
+for (i in 1:22) {
+  file_path <- paste0("data/ADNI_QC_FINAL_chr", i, ".raw")
+  chr_data <- read.table(file_path, header=T)
+  n_snps[i] <- ncol(chr_data)
+  names(n_snps)[i] <- paste0("chr", i)
+}
+
+# Read sex and mitochondrial chromosomes
+chrX <- read.table("data/ADNI_chr23_HWE_females.raw", header=T)
+chrX <- as.data.frame(chrX)
+
+chrMT <- read.table("data/ADNI_chr25.raw", header=T)
+chrMT <- as.data.frame(chrMT)
+
+# Compile variant counts
+variant_types <- c("Autosomal variants", "Chromosome X", "Mitochondrial variants", "Total variants after QC")
+variant_counts <- c(
+  sum(n_snps),
+  ncol(chrX),
+  ncol(chrMT),
+  sum(n_snps) + ncol(chrX) + ncol(chrMT)
+)
+
+# Create and display summary table
+summary_table <- data.frame(
+  `Type of Genetic Variant` = variant_types,
+  `Total SNPs` = variant_counts
+)
+
+kable(summary_table, row.names = FALSE)
+```
+
+
+Visualization:
+```{r, eval=F}
+pdf("data/genetic_summary_descript.pdf")
+ggplot(summary_table, aes(x = `Type of Genetic Variant`, y = `Total SNPs`, fill = `Type of Genetic Variant`)) +
+  geom_bar(stat = "identity", width = 0.7) +
+  theme_minimal() +
+  labs(
+    title = "Number of variants by category after QC",
+    x = NULL,
+    y = "Number of SNPs"
+  ) +
+  theme(legend.position = "none")
+dev.off()
+```
+
+
+
+---
+
+# References {.unnumbered}
+
+
+* Anderson CA, Pettersson FH, Clarke GM, Cardon LR, Morris AP, Zondervan KT. (2011). Data quality control in genetic case-control association studies. Nature Protocols, Vol 5. Iss9, SN.1754-2189
+
+* Blauwendraat C, Faghri F, Pihlstrom L, et al. NeuroChip, an updated version of the NeuroX genotyping platform to rapidly screen for variants associated with neurological diseases. Neurobiol Aging. 2017 Sep;57:247.e9-247.e13. doi: 10.1016/j.neurobiolaging.2017.05.009. Epub 2017 May 17. PubMed PMID: 28602509; PubMed Central PMCID: PMC5534378.
+
+* Patterson N, Price AL, Reich D. (2006). Population structure and eigenanalysis. PloS Genetics. 2(12):e190.
+
+* Purcell S, Neale B, Todd-Brown K, Thomas L, Ferreira MAR, Bender D, Maller J, Sklar P, de Bakker PIW, Daly MJ & Sham PC. (2007). PLINK: a toolset for whole-genome association and population-based linkage analysis. American Journal of Human Genetics, 81.
+
+
+---
+
+Organized by Alzheimer’s Association, ISTAART Neuroimaging PIA. Working group Brain Imaging Genetics.
+
+Special thanks to ADNI for providing the datasets.
+
+© 2025 AAIC Workshop Basics of Genetics • Maintained by @GeneticNeuroStats
