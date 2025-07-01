@@ -66,7 +66,7 @@ Participants will access a cloud-hosted Linux-based VM with pre-installed tools.
 | Webinar Topic                    | Slides                     |
 |----------------------------------|----------------------------|
 | Design your genetics experiment  | [Slides](#)                |
-| QC and Imputation                | [Slides1](sections/QC_Report_PLINK_NEW.Rmd),[Slides2](#) |
+| QC and Imputation                | [Slides1](sections/Genetic_QC.html), [Slides2](#) |
 | Single SNP association analysis  | [Slides](#)                |
 | Genome Wide Association Studies  | [Slides](#)                |
 | Polygenic Risk Scores            | [Slides](#)                |
