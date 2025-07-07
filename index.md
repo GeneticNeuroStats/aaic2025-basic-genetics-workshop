@@ -103,6 +103,8 @@ This workshop is supported by: Alzheimer’s Association, STAART Neuroimaging PI
 
 Special thanks to ADNI datasets, and infrastructure support from UCL team.
 
+Interested in learning more? Check out our recent book chapter, [Genomics and Transcriptomics of Alzheimer Disease](https://link.springer.com/chapter/10.1007/978-3-031-80849-4_13)
+
 © 2025 AAIC Workshop Basics of Genetics • Maintained by [@GeneticNeuroStats](https://github.com/GeneticNeuroStats)  
 Hosted on [GitHub Pages](https://pages.github.com/)
 
