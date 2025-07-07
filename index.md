@@ -93,15 +93,15 @@ Participants will access a cloud-hosted Linux-based VM with pre-installed tools.
 ##     Teaching Aids
 
 - Luigi Lorenzini, PhD  
-- Armand Gonzalez-Escalante, MSc  
 - Blanca Rodriguez-Fernandez, MSc  
 - Patricia Genius, MSc
+- Armand Gonzalez-Escalante, MSc  
   
 ---
 
 This workshop is supported by: Alzheimer’s Association, STAART Neuroimaging PIA - Working group Brain Imaging Genetics
 
-Special thanks to ADNI datasets, and infrastructure support from XXXX teams
+Special thanks to ADNI datasets, and infrastructure support from UCL team.
 
 © 2025 AAIC Workshop Basics of Genetics • Maintained by [@GeneticNeuroStats](https://github.com/GeneticNeuroStats)  
 Hosted on [GitHub Pages](https://pages.github.com/)
