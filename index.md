@@ -99,11 +99,11 @@ Participants will access a cloud-hosted Linux-based VM with pre-installed tools.
   
 ---
 
-This workshop is supported by: Alzheimer’s Association, STAART Neuroimaging PIA - Working group Brain Imaging Genetics
+This workshop is supported by: [Alzheimer’s Association](https://www.alz.org/), ISTAART Neuroimaging PIA - Working group Brain Imaging Genetics
 
-Special thanks to ADNI datasets, and infrastructure support from UCL team.
+Special thanks to [ADNI](https://adni.loni.usc.edu/) datasets, and infrastructure support from UCL team.
 
-Interested in learning more? Check out our recent book chapter, [Genomics and Transcriptomics of Alzheimer Disease](https://link.springer.com/chapter/10.1007/978-3-031-80849-4_13)
+Interested in learning more? **Check out our recent book chapter**, [Cite: Vilor-Tejedor, N. et al. (2025). Genomics and Transcriptomics of Alzheimer Disease. In: Tarawneh, R. (eds) Biomarkers of Neurodegenerative Disorders. Springer, Cham. https://doi.org/10.1007/978-3-031-80849-4_13](https://link.springer.com/chapter/10.1007/978-3-031-80849-4_13). 
 
 © 2025 AAIC Workshop Basics of Genetics • Maintained by [@GeneticNeuroStats](https://github.com/GeneticNeuroStats)  
 Hosted on [GitHub Pages](https://pages.github.com/)
