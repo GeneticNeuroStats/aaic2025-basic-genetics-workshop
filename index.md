@@ -40,7 +40,7 @@ Participants will access a cloud-hosted Linux-based VM with pre-installed tools.
 | 9:40 am    | **Break**                                               |                                           |
 | 9:50 am    | Genome Wide Association Studies (GWAS)                  | [Yuetiva Robles](https://www.linkedin.com/in/yuetiva/) 
 | 10:40 am   | Polygenic Risk Score (PRS) calculation with PRSice      | [Emma Luckett](https://amypad.eu/news/recent-news/interview-with-emma-luckett/) |
-| 11:35 am   | PostGWAS analysis: Understanding biological pathways    | [Krishna Rani Kalari](http://kalarikrlab.org/) & [Karunya Kandimalla](https://www.pharmacy.umn.edu/our-faculty-staff/our-faculty/karunya-kandimalla)  |
+| 11:35 am   | PostGWAS analysis: Understanding biological pathways    | [Krishna Rani Kalari](http://kalarikrlab.org/), [Karunya Kandimalla](https://www.pharmacy.umn.edu/our-faculty-staff/our-faculty/karunya-kandimalla)  |
 | 11:55 am   | End / Review                                             | [Tavia Evans](https://www.gbhi.org/profiles/tavia-evans), [Natalia Vilor-Tejedor](https://www.barcelonabeta.org/en/about/organization/natalia-vilor-tejedor), [Junhao Wen](https://www.columbiaradiology.org/profile/junhao-hao-wen-phd)   |
 
 ---
