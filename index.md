@@ -103,7 +103,7 @@ This workshop is supported by: [Alzheimer’s Association](https://www.alz.org/)
 
 Special thanks to [ADNI](https://adni.loni.usc.edu/) datasets, and infrastructure support from UCL team.
 
-Interested in learning more? **Check out our recent book chapter**, [Cite: Vilor-Tejedor, N. et al. (2025). Genomics and Transcriptomics of Alzheimer Disease. In: Tarawneh, R. (eds) Biomarkers of Neurodegenerative Disorders. Springer, Cham. https://doi.org/10.1007/978-3-031-80849-4_13](https://link.springer.com/chapter/10.1007/978-3-031-80849-4_13). 
+Interested in learning more? **Check out our recent book chapter**, [Vilor-Tejedor, N. et al. (2025). Genomics and Transcriptomics of Alzheimer Disease. In: Tarawneh, R. (eds) Biomarkers of Neurodegenerative Disorders. Springer, Cham. https://doi.org/10.1007/978-3-031-80849-4_13](https://link.springer.com/chapter/10.1007/978-3-031-80849-4_13). 
 
 © 2025 AAIC Workshop Basics of Genetics • Maintained by [@GeneticNeuroStats](https://github.com/GeneticNeuroStats)  
 Hosted on [GitHub Pages](https://pages.github.com/)
