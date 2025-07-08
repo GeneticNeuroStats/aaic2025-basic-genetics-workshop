@@ -67,10 +67,10 @@ Participants will access a cloud-hosted Linux-based VM with pre-installed tools.
 |----------------------------------|----------------------------|
 | Design your genetics experiment  | [Slides Intro](sections/S1_Intro.pdf) |
 | QC and Imputation                | [Slides](sections/S2_Genetic_QC_Imputation_Slides_NVT.pdf), [Pipeline QC](sections/Genetic_QC.html), [Pipeline Imputation](sections/Genetic_Imputation.html) |
-| Single SNP association analysis  | [Slides SNP analysis](sections/S3_Robles_SNPanalysis_GWAS.pdf) |
-| Genome Wide Association Studies  | [Slides GWAS](sections/S3_Robles_SNPanalysis_GWAS.pdf) |
-| Polygenic Risk Scores            | [Slides PRS](sections/S4_PRS_Presentation_Emma.pdf) |
-| PostGWAS analysis                | [Slides postGWAS](sections/S5_Post-GWAS_Kalari_Kandimalla.pdf) |
+| Single SNP association analysis  | [Slides](sections/S3_Robles_SNPanalysis_GWAS.pdf) |
+| Genome Wide Association Studies  | [Slides](sections/S3_Robles_SNPanalysis_GWAS.pdf) |
+| Polygenic Risk Scores            | [Slides](sections/S4_PRS_Presentation_Emma.pdf) |
+| PostGWAS analysis                | [Slides](sections/S5_Post-GWAS_Kalari_Kandimalla.pdf) |
 
 ---
 
