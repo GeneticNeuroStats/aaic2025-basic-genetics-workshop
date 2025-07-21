@@ -73,7 +73,6 @@ Participants will access a cloud-hosted Linux-based VM with pre-installed tools.
 | Polygenic Risk Scores            | [Slides PRS](sections/S5_PRS_Presentation_Emma.pdf) |
 | PostGWAS analysis                | [Slides postGWAS](sections/S6_Post-GWAS_Kalari_Kandimalla.pdf) |
 | Post Survey Feedback             | [Survey/Feedback](sections/SF_BIG_goodbye.pdf) |
-|----------------------------------|----------------------------|
 
 ---
 
