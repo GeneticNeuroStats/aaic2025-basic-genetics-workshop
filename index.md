@@ -68,11 +68,11 @@ Participants will access a cloud-hosted Linux-based VM with pre-installed tools.
 | Welcome                          | [Welcome](sections/S0_BIG_welcome.pptx) |
 | Design your genetics experiment  | [Slides Intro](sections/S1_Intro.pdf) |
 | QC and Imputation                | [Slides QC Imputation](sections/S2_Genetic_QC_Imputation_Slides_NVT.pdf), [Pipeline QC](sections/Genetic_QC.html), [Pipeline Imputation](sections/Genetic_Imputation.html) |
-| Single SNP association analysis  | [Slides SNP association](sections/S3_Robles_SNPanalysis.pdf). [Pipeline](sections/Single_SNP_association_analysis.html) |
-| Genome Wide Association Studies  | [Slides GWAS](sections/S4_Robles_GWAS.pdf), [Pipeline](sections/GWAS.html) |
+| Single SNP association analysis  | [Slides SNP association](sections/S3_Robles_SNPanalysis.pdf), [Pipeline SNP analysis](sections/Single_SNP_association_analysis.html) |
+| Genome Wide Association Studies  | [Slides GWAS](sections/S4_Robles_GWAS.pdf), [Pipeline GWAS](sections/GWAS.html) |
 | Polygenic Risk Scores            | [Slides PRS](sections/S5_PRS_Presentation_Emma.pdf) |
 | PostGWAS analysis                | [Slides postGWAS](sections/S6_Post-GWAS_Kalari_Kandimalla.pdf) |
-| Post survey Feedback             | [Survey/Feedback](sections/SF_BIG_goodbye.pptx) |
+| Post Survey Feedback             | [Survey/Feedback](sections/SF_BIG_goodbye.pptx) |
 |----------------------------------|----------------------------|
 
 ---
