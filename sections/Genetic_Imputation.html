@@ -1740,7 +1740,7 @@ plink --merge-list merge.list --make-bed --out ADNI1.merged</code></pre>
 <pre class="bash"><code>plink --bfile ADNI1.merged --recode vcf bgz --out ADNI1.impQC
 tabix -p vcf ADNI1.impQC.vcf.gz
 
-bcftools annotate --annotations /nfs/users2/rg/nvilortejedor/ALFA-GWAS/HRC_Imputation/annotation_GRCh37p13/All_20180423.vcf.gz --columns ID --threads 20 -O z -o ADNI1.impQC.rs.vcf.gz ADNI1.impQC.vcf.gz </code></pre>
+bcftools annotate --annotations /path/to/All_20180423.vcf.gz --columns ID --threads 20 -O z -o ADNI1.impQC.rs.vcf.gz ADNI1.impQC.vcf.gz </code></pre>
 </div>
 <div id="transform-to-plink-format-optional" class="section level3 unnumbered">
 <h3 class="unnumbered">Transform to Plink format (optional)</h3>
